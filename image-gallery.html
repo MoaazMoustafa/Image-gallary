@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="lightbox.min.css">
+    <script src="lightbox-plus-jquery.min.js"></script>
+    
+    <title>Document</title>
+    <style>
+        .gallery img{
+            width:300px;
+            height: 200px;
+            transition: 1s;
+            padding: 15px;
+        }
+        .gallery{
+            margin:10px 50px;
+        }
+        .gallery img:hover{
+            filter: grayscale(100%);
+            transform: scale(1.1);
+        }
+        .hid{
+            width: 1000px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #DDD;
+            z-index: 1000;
+            padding: 40px;
+            text-align: center;
+            line-height: 5;
+            font-size: xx-large;
+            display: none;
+
+        }
+        .hid input{
+            width: 150px;
+            height: 30px;
+            border-radius: 10px;
+            outline: none;
+        }
+        button{
+            width: 300px;
+            height: 50px;
+            font-size: larger;
+            text-transform:uppercase;
+            /* line-height: 1.5; */
+            border-radius: 30px;
+            border: none;
+            background-color: rgb(195, 248, 250);
+            cursor: pointer;
+            outline: none;
+            color: #5f5858;
+            margin: 20px;
+        }
+        #ch:hover{
+            background-color: rgb(83, 139, 141);
+        }
+    </style>
+</head>
+<body>
+    <div class="hid">
+        <div>
+            <label>Please enter the number of photo you want to change its caption</label>
+            <input type="number" id="num">
+            
+        </div>
+        <div>
+            <label>Please enter the caption</label>
+            <input type="text" id="caption">
+        </div>
+        <div>
+            <button id="btn">change</button>
+            <button id="can">cancel</button>
+
+        </div>
+    </div>
+    <div class="gallery">
+        <a href="images/1.jpg" data-lightbox="mygallery" data-title="picture no 1"><img src="images/1.jpg"></a>
+        <a href="images/2.jpg" data-lightbox="mygallery" data-title="picture no 2"><img src="images/2.jpg"></a>
+        <a href="images/3.jpg" data-lightbox="mygallery" data-title="picture no 3"><img src="images/3.jpg"></a>
+        <a href="images/4.jpg" data-lightbox="mygallery" data-title="picture no 4"><img src="images/4.jpg"></a>
+        <a href="images/5.jpg" data-lightbox="mygallery" data-title="picture no 5"><img src="images/5.jpg"></a>
+        <a href="images/6.jpg" data-lightbox="mygallery" data-title="picture no 6"><img src="images/6.jpg"></a>
+        <a href="images/7.jpg" data-lightbox="mygallery" data-title="picture no 7"><img src="images/7.jpg"></a>
+        <a href="images/8.jpeg" data-lightbox="mygallery" data-title="picture no 8"><img src="images/8.jpeg"></a>
+        <a href="images/9.jpg" data-lightbox="mygallery" data-title="picture no 9"><img src="images/9.jpg"></a>
+        <a href="images/10.jpg" data-lightbox="mygallery" data-title="picture no 10"><img src="images/10.jpg"></a>
+        <button id="ch">Change Caption</button>
+
+       
+    </div>
+  
+    <script>
+
+      
+      let anchors = $("a");
+      $("#btn").click(function(){
+          let index = $("#num").val()
+          let caption = $("#caption").val()
+          console.log(index, caption)
+        //   console.log(images[index-1])
+        //   images[index-1].attr("data-title",caption)
+        anchors[index-1].setAttribute("data-title",caption)
+        $("#num").val("")
+        $("#caption").val("")
+        $(".hid").hide(500)
+      })
+
+      $("#ch").click(function(e){
+          e.stopPropagation()
+          $(".hid").show(500)
+      })
+      $("#can").click(function(){
+        $(".hid").hide(500)
+      })
+      $("html").click(function(){
+        $(".hid").hide(500)
+      })
+      $(".hid").click(function(e){
+          e.stopPropagation()
+      })
+
+    </script>
+</body>
+</html>
