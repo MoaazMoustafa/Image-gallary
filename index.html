@@ -114,13 +114,13 @@
 
       $("#ch").click(function(e){
           e.stopPropagation()
-          $(".hid").show(500)
+          $(".hid").fadeIn(1000)
       })
       $("#can").click(function(){
-        $(".hid").hide(500)
+        $(".hid").fadeOut(1000)
       })
       $("html").click(function(){
-        $(".hid").hide(500)
+        $(".hid").fadeOut(1000)
       })
       $(".hid").click(function(e){
           e.stopPropagation()
